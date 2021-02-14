@@ -1,7 +1,7 @@
 require "json"
 
 class Cartool < Formula
-  def self.homepage
+  def self.homepage_url
     "https://github.com/0xxd0/cartools"
   end
 
@@ -22,7 +22,7 @@ class Cartool < Formula
   end
   
   desc "ToolKit for Compiled Asset Catalogs (.car file) written in Swift"
-  homepage homepage
+  homepage homepage_url
   url download_url
   sha256 sha256_checksum
   license "MIT"
