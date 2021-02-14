@@ -30,7 +30,7 @@ class Cartool < Formula
   depends_on xcode: "12.0"
 
   def install
-    system "xcodebuild", "-resolvePackageDependencies"
+    system "xcodebuild -resolvePackageDependencies"
     system "xcodebuild",
            "-project", "Cartools.xcodeproj",
            "-scheme", "cartool",
