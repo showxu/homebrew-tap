@@ -20,7 +20,7 @@ class Cartool < Formula
   def self.sha256_checksum
     "a9b862dae30695df8611a85d53ae52af12a3741b0f5a760a17d842aac5d62a3c"
   end
-  
+
   desc "ToolKit for Compiled Asset Catalogs (.car file) written in Swift"
   homepage "https://github.com/0xxd0/cartools"
   url download_url
@@ -30,8 +30,15 @@ class Cartool < Formula
   depends_on xcode: "12.0"
 
   def install
-    "xcodebuild -resolvePackageDependencies"
-    "xcodebuild -project Cartools.xcodeproj -scheme cartool -configuration Release -arch x86_64 -sdk macosx -derivedDataPath .build"
+    system "xcodebuild", "-resolvePackageDependencies"
+    system "xcodebuild",
+           "-project", "Cartools.xcodeproj",
+           "-scheme", "cartool",
+           "-configuration", "Release",
+           "-arch", "x86_64",
+           "-sdk", "macosx",
+           "-derivedDataPath", ".build"
+
     bin.install ".build/Build/Products/Release/cartool"
   end
 
