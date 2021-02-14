@@ -1,4 +1,4 @@
-class cartool < Formula
+class Cartool < Formula
   desc "Extract resources from car file."
   homepage "https://github.com/0xxd0/swift-cartools"
   url "https://github.com/0xxd0/swift-cartools/releases/download/1.0.0-alpha/cartool.tar.gz"
