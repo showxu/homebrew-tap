@@ -5,7 +5,7 @@ class Cartool < Formula
     "https://github.com/0xxd0/cartools"
   end
 
-  def self.tag 
+  def self.tag
     "1.0.0-alpha"
   end
 
@@ -27,7 +27,7 @@ class Cartool < Formula
   sha256 sha256_checksum
   license "MIT"
 
-  depends_on :xcode => "12.0"
+  depends_on xcode: "12.0"
 
   def install
     "xcodebuild -resolvePackageDependencies"
