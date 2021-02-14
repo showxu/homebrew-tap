@@ -30,14 +30,16 @@ class Cartool < Formula
   depends_on xcode: "12.0"
 
   def install
-    system "xcodebuild -resolvePackageDependencies"
-    system "xcodebuild",
-           "-project", "Cartools.xcodeproj",
-           "-scheme", "cartool",
-           "-configuration", "Release",
-           "-arch", "x86_64",
-           "-sdk", "macosx",
-           "-derivedDataPath", ".build"
+    system "xcodebuild 
+            -resolvePackageDependencies"
+            
+    system "xcodebuild 
+            -project Cartools.xcodeproj
+            -scheme cartool 
+            -configuration Release 
+            -arch x86_64
+            -sdk macosx
+            -derivedDataPath .build"
 
     bin.install ".build/Build/Products/Release/cartool"
   end
