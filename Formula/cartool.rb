@@ -1,18 +1,35 @@
-# Documentation: https://docs.brew.sh/Formula-Cookbook
-#                https://rubydoc.brew.sh/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
+require "json"
+
 class Cartool < Formula
-  desc "ToolKit for Compiled Asset Catalogs (.car file) written in Swift."
-  homepage "https://github.com/0xxd0/cartools"
-  url "https://github.com/0xxd0/cartools/archive/1.0.0-alpha.tar.gz"
-  sha256 "a9b862dae30695df8611a85d53ae52af12a3741b0f5a760a17d842aac5d62a3c"
+  def self.homepage
+    "https://github.com/0xxd0/cartools"
+  end
+
+  def self.tag 
+    "1.0.0-alpha"
+  end
+
+  def self.file_path
+    "#{tag}.tar.gz"
+  end
+
+  def self.download_url
+    "#{homepage}/archive/#{file_path}"
+  end
+
+  def self.sha256_checksum
+    "a9b862dae30695df8611a85d53ae52af12a3741b0f5a760a17d842aac5d62a3c"
+  end
+  
+  desc "ToolKit for Compiled Asset Catalogs (.car file) written in Swift"
+  homepage homepage
+  url download_url
+  sha256 sha256_checksum
   license "MIT"
 
   depends_on :xcode => "12.0"
 
   def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
-    # Remove unrecognized options if warned by configure
     system "xcodebuild", "-resolvePackageDependencies"
     system "xcodebuild",
            "-project", "Cartools.xcodeproj",
@@ -26,15 +43,6 @@ class Cartool < Formula
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test cartools`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "false"
+    system "#{bin}/cartool", "-h"
   end
 end
