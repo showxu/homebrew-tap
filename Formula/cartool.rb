@@ -14,7 +14,7 @@ class Cartool < Formula
   end
 
   def self.download_url
-    "#{homepage}/archive/#{file_path}"
+    "#{homepage_url}/archive/#{file_path}"
   end
 
   def self.sha256_checksum
@@ -30,13 +30,13 @@ class Cartool < Formula
   depends_on xcode: "12.0"
 
   def install
-    system "xcodebuild 
+    system "xcodebuild
             -resolvePackageDependencies"
-            
-    system "xcodebuild 
+
+    system "xcodebuild
             -project Cartools.xcodeproj
-            -scheme cartool 
-            -configuration Release 
+            -scheme cartool
+            -configuration Release
             -arch x86_64
             -sdk macosx
             -derivedDataPath .build"
