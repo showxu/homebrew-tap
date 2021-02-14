@@ -22,7 +22,7 @@ class Cartool < Formula
   end
   
   desc "ToolKit for Compiled Asset Catalogs (.car file) written in Swift"
-  homepage homepage_url
+  homepage "https://github.com/0xxd0/cartools"
   url download_url
   sha256 sha256_checksum
   license "MIT"
@@ -30,15 +30,8 @@ class Cartool < Formula
   depends_on :xcode => "12.0"
 
   def install
-    system "xcodebuild", "-resolvePackageDependencies"
-    system "xcodebuild",
-           "-project", "Cartools.xcodeproj",
-           "-scheme", "cartool",
-           "-configuration", "Release",
-           "-arch", "x86_64",
-           "-sdk", "macosx",
-           "-derivedDataPath", ".build"
-
+    "xcodebuild -resolvePackageDependencies"
+    "xcodebuild -project Cartools.xcodeproj -scheme cartool -configuration Release -arch x86_64 -sdk macosx -derivedDataPath .build"
     bin.install ".build/Build/Products/Release/cartool"
   end
 
